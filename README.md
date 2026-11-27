@@ -8,6 +8,8 @@ The look follows the college LMS: dark/light theme, Russian / English / Kyrgyz.
 - `frontend/` — React + Vite + TypeScript, react-i18next, dnd-kit
 - `docs/superpowers/` — design spec and implementation plan
 
+**Quick start:** `./start.sh` (macOS/Linux) or `start.bat` (Windows) — see [ЗАПУСК.md](ЗАПУСК.md) (in Russian).
+
 ## Requirements
 
 Python 3.12+, Node 20+, `gettext` (only to recompile translations).
