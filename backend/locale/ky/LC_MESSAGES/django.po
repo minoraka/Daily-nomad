@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ky\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Students must choose a group."
+msgstr "Студент агымды тандашы керек."
+
+msgid "Teachers do not belong to a group."
+msgstr "Мугалимде агым болбойт."
+
+msgid "Unknown or foreign task."
+msgstr "Белгисиз же башка бирөөнүн тапшырмасы."
+
+msgid "Daily for today already exists."
+msgstr "Бүгүнкү дейлик жазылып калган."
+
+msgid "You can only edit today's daily."
+msgstr "Бүгүнкү дейликти гана өзгөртүүгө болот."
+
+msgid "Student"
+msgstr "Студент"
+
+msgid "Teacher"
+msgstr "Мугалим"
+
+msgid "Planned"
+msgstr "Пландалган"
+
+msgid "In progress"
+msgstr "Аткарылууда"
+
+msgid "Done"
+msgstr "Даяр"
+
+msgid "No active account found with the given credentials"
+msgstr "Логин же сырсөз туура эмес."
+
+msgid "Given token not valid for any token type"
+msgstr "Токен жараксыз."
+
+msgid "Token is invalid"
+msgstr "Токен жараксыз."
+
+msgid "Token is expired"
+msgstr "Токендин мөөнөтү бүттү."
+
+msgid "Token is invalid or expired"
+msgstr "Токен жараксыз же мөөнөтү бүткөн."
+
+msgid "This field may not be blank."
+msgstr "Бул талаа бош болбошу керек."
+
+msgid "This field may not be null."
+msgstr "Бул талаа бош болбошу керек."
+
+msgid "Authentication credentials were not provided."
+msgstr "Кирүү маалыматтары берилген жок."
+
+msgid "You do not have permission to perform this action."
+msgstr "Бул аракетке укугуңуз жок."
+
+msgid "Not found."
+msgstr "Табылган жок."
+
+#, python-brace-format
+msgid "Ensure this field has no more than {max_length} characters."
+msgstr "Бул талаада {max_length} белгиден ашпашы керек."
+
+#, python-brace-format
+msgid "\"{input}\" is not a valid choice."
+msgstr "\"{input}\" — туура эмес тандоо."
+
+#, python-brace-format
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr "Туура эмес id \"{pk_value}\" — мындай объект жок."
