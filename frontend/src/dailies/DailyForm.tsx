@@ -55,7 +55,7 @@ export function DailyForm({ initial, onSaved, onCancel }: {
         <textarea value={blockers} onChange={(e) => setBlockers(e.target.value)}
           placeholder={t('dailies.blockers_placeholder')} />
       </Field>
-      <Field label={t('dailies.tasks')} errors={errors.task_ids}>
+      <Field group label={t('dailies.tasks')} errors={errors.task_ids}>
         <div className="chips">
           {myTasks.length === 0 && <span className="muted small">{t('dailies.no_tasks')}</span>}
           {myTasks.map((task) => (

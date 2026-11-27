@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: { '/api': 'http://localhost:8000', '/admin': 'http://localhost:8000', '/static': 'http://localhost:8000' },
+    proxy: Object.fromEntries(['/api', '/admin', '/static'].map((p) => [p, process.env.API_TARGET ?? 'http://localhost:8000'])),
   },
-  test: { environment: 'jsdom', include: ['src/**/*.test.ts'] },
+  test: { exclude: ["e2e/**", "node_modules/**"], environment: 'jsdom', include: ['src/**/*.test.ts'] },
 })

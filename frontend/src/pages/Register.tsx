@@ -46,7 +46,7 @@ export default function Register() {
   return (
     <AuthShell title={t('auth.register_title')}>
       <form onSubmit={submit} className="form">
-        <Field label={t('auth.role')} errors={errors.role}>
+        <Field group label={t('auth.role')} errors={errors.role}>
           <PillTabs<Role> value={role} onChange={setRole}
             tabs={[{ key: 'student', label: t('role.student') }, { key: 'teacher', label: t('role.teacher') }]} />
         </Field>

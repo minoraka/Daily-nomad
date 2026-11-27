@@ -1,15 +1,24 @@
 import type { ReactNode } from 'react'
 
-export function Field({ label, errors, children }: { label: string; errors?: string[]; children: ReactNode }) {
-  return (
-    <label className="field">
+/** Labelled form field. Use `group` when children are several controls (buttons, chips) — a <label> may wrap only one. */
+export function Field({ label, errors, children, group = false }: {
+  label: string
+  errors?: string[]
+  children: ReactNode
+  group?: boolean
+}) {
+  const body = (
+    <>
       <span className="field-label">{label}</span>
       {children}
       {errors?.map((e) => (
         <span key={e} className="field-error">{e}</span>
       ))}
-    </label>
+    </>
   )
+  return group
+    ? <div className="field" role="group" aria-label={label}>{body}</div>
+    : <label className="field">{body}</label>
 }
 
 export function FormErrors({ errors }: { errors?: string[] }) {
