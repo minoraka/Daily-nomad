@@ -11,11 +11,11 @@ export function useTaskBoard(query: TaskQuery | null) {
   const [error, setError] = useState<string | null>(null)
   const key = JSON.stringify(query)
 
-  const reload = useCallback(async () => {
+  const reload = useCallback(async (keepError = false) => {
     if (!query) return
     try {
       setTasks(await listTasks(query))
-      setError(null)
+      if (!keepError) setError(null)
     } catch {
       setError(t('common.error'))
     }
@@ -31,12 +31,14 @@ export function useTaskBoard(query: TaskQuery | null) {
     const drop = computeDrop(tasks, task.id, overId)
     if (!drop) return
     setTasks(applyDrop(tasks, task.id, overId))
+    let failed = false
     try {
       await moveTask(task.id, drop.status, drop.position)
     } catch {
+      failed = true
       setError(t('board.move_error'))
     }
-    reload()
+    await reload(failed)
   }
 
   return { tasks, error, reload, onDrop }

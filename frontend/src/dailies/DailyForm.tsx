@@ -43,7 +43,7 @@ export function DailyForm({ initial, onSaved, onCancel }: {
 
   return (
     <form className="form card" onSubmit={submit} data-testid="daily-form">
-      <div className="card-header">{t('dailies.new')}</div>
+      <div className="card-header">{initial ? t('dailies.edit_today') : t('dailies.new')}</div>
       <Field label={t('dailies.done')} errors={errors.done}>
         <textarea value={done} onChange={(e) => setDone(e.target.value)} required autoFocus
           placeholder={t('dailies.done_placeholder')} data-testid="daily-done" />

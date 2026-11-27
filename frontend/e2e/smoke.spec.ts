@@ -46,6 +46,9 @@ test('student: task, drag, daily, streak', async ({ page }) => {
   await page.getByRole('button', { name: 'E2E задача' }).click()
   await page.getByTestId('daily-save').click()
   await expect(page.getByTestId('write-daily')).toHaveText('Редактировать сегодняшний')
+  await page.getByTestId('write-daily').click()
+  await expect(page.getByTestId('daily-form').locator('.card-header')).toHaveText('Редактировать сегодняшний')
+  await page.getByRole('button', { name: 'Отмена' }).click()
 
   await page.goto('/')
   await expect(page.getByTestId('streak-count')).not.toHaveText('0 дней подряд!')

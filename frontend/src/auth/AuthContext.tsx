@@ -25,8 +25,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
     try {
       setMe(await ep.getMe())
-    } catch {
-      setMe(null)
+    } catch (e) {
+      // Only an auth failure ends the session; a network blip keeps the current user.
+      if ((e as { response?: { status?: number } }).response?.status === 401) setMe(null)
     }
   }, [])
 

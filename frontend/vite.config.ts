@@ -7,5 +7,5 @@ export default defineConfig({
   server: {
     proxy: Object.fromEntries(['/api', '/admin', '/static'].map((p) => [p, process.env.API_TARGET ?? 'http://localhost:8000'])),
   },
-  test: { exclude: ["e2e/**", "node_modules/**"], environment: 'jsdom', include: ['src/**/*.test.ts'] },
+  test: { exclude: ['e2e/**', 'node_modules/**'], environment: 'jsdom', include: ['src/**/*.test.ts', 'src/**/*.test.tsx'] },
 })
