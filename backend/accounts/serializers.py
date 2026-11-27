@@ -23,10 +23,15 @@ class AuthorSerializer(serializers.ModelSerializer):
 class MeSerializer(serializers.ModelSerializer):
     initials = serializers.CharField(read_only=True)
     group = GroupSerializer(read_only=True)
+    streak = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ["id", "username", "first_name", "last_name", "initials", "role", "group"]
+        fields = ["id", "username", "first_name", "last_name", "initials", "role", "group", "streak"]
+
+    def get_streak(self, obj):
+        from dailies.streak import streak_for
+        return streak_for(obj) if obj.is_student else None
 
 
 class RegisterSerializer(serializers.ModelSerializer):

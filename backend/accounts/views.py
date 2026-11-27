@@ -45,3 +45,8 @@ class GroupStudentsView(generics.ListAPIView):
 
     def get_queryset(self):
         return User.objects.filter(group_id=self.kwargs["pk"], role=User.Role.STUDENT).order_by("last_name", "first_name")
+
+
+class UserDetailView(generics.RetrieveAPIView):
+    serializer_class = MeSerializer
+    queryset = User.objects.select_related("group")
