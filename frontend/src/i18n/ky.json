@@ -1,0 +1,46 @@
+{
+  "app": { "name": "Student Board" },
+  "nav": { "home": "Башкы бет", "board": "Такта", "dailies": "Дейликтер", "profile": "Профиль", "menu": "Меню" },
+  "top": { "logout": "Чыгуу", "theme_light": "Жарык тема", "theme_dark": "Караңгы тема", "language": "Тил" },
+  "auth": {
+    "login_title": "Кирүү", "register_title": "Катталуу",
+    "username": "Логин", "password": "Сырсөз", "first_name": "Аты", "last_name": "Фамилиясы",
+    "role": "Мен", "group": "Агым", "choose_group": "Агымды тандаңыз",
+    "login_btn": "Кирүү", "register_btn": "Катталуу",
+    "no_account": "Аккаунтуңуз жокпу?", "have_account": "Аккаунтуңуз барбы?",
+    "no_groups": "Азырынча агымдар жок — администратордон түзүп берүүнү сураныңыз."
+  },
+  "role": { "student": "Студент", "teacher": "Мугалим" },
+  "status": { "todo": "Пландалган", "in_progress": "Аткарылууда", "done": "Даяр" },
+  "group": { "label": "Агым" },
+  "board": {
+    "title": "Такта", "all_students": "Бардык студенттер", "add_task": "Тапшырма",
+    "new_task": "Жаңы тапшырма", "edit_task": "Тапшырма", "task_title": "Аталышы", "task_description": "Сүрөттөмө",
+    "status": "Абалы", "save": "Сактоо", "cancel": "Жокко чыгаруу", "delete": "Өчүрүү", "close": "Жабуу",
+    "confirm_delete": "Тапшырманы өчүрөсүзбү?", "empty_column": "Бош", "move_error": "Тапшырманы жылдыруу мүмкүн болбоду",
+    "no_description": "Сүрөттөмө жок"
+  },
+  "dailies": {
+    "title": "Дейликтер", "write": "Дейлик жазуу", "edit_today": "Бүгүнкүнү оңдоо",
+    "new": "Бүгүнкү дейлик",
+    "done": "Эмне кылдым", "plans": "Эмне кылам", "blockers": "Эмне тоскоол болууда", "tasks": "Тапшырмалар",
+    "done_placeholder": "Мисалы: кирүү формасын жасадым, JWT менен иштедим",
+    "plans_placeholder": "Андан ары эмне кыласың",
+    "blockers_placeholder": "Бир нерсе тоскоол болсо — жаз",
+    "save": "Жарыялоо", "edit": "Оңдоо", "delete": "Өчүрүү", "cancel": "Жокко чыгаруу",
+    "confirm_delete": "Дейликти өчүрөсүзбү?", "empty": "Азырынча дейликтер жок", "load_more": "Дагы көрсөтүү",
+    "no_tasks": "Тапшырмалар жок"
+  },
+  "home": {
+    "my_in_progress": "Аткарылып жаткан тапшырмаларым", "recent_dailies": "Агымдын акыркы дейликтери",
+    "empty_tasks": "Азыр аткарылып жаткан тапшырма жок"
+  },
+  "streak": {
+    "days_one": "{{count}} күн катары менен!", "days_other": "{{count}} күн катары менен!",
+    "hint": "стрик үчүн ар бир окуу күнү дейлик жаз", "today": "бүгүн, {{date}}",
+    "day_of": "6 күндүн {{n}}-күнү"
+  },
+  "days": { "mon": "дш", "tue": "шш", "wed": "шр", "thu": "бш", "fri": "жм", "sat": "иш" },
+  "profile": { "board": "Такта", "dailies": "Дейликтер", "teacher_note": "Мугалим — көрүү гана" },
+  "common": { "loading": "Жүктөлүүдө…", "error": "Бир нерсе туура эмес болду", "retry": "Кайталоо", "not_found": "Табылган жок" }
+}
