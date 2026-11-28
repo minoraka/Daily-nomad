@@ -38,7 +38,7 @@ export function DailyItem({ daily, onEdit, onDelete, compact = false }: {
           {daily.tasks.map((task) => (
             <span key={task.id} className="chip">
               <span className={`badge badge-${task.status}`}>{t(`status.${task.status}`)}</span>
-              {task.title}
+              <strong>{task.key}</strong> {task.title}
             </span>
           ))}
         </div>

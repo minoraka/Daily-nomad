@@ -37,7 +37,7 @@ def test_daily_links_own_tasks(auth, student):
     t = Task.objects.create(owner=student, created_by=student, title="JWT")
     r = auth(student).post("/api/dailies/", {"done": "a", "task_ids": [t.id]}, format="json")
     assert r.status_code == 201
-    assert r.data["tasks"] == [{"id": t.id, "title": "JWT", "status": "todo"}]
+    assert r.data["tasks"] == [{"id": t.id, "key": f"SB-{t.id}", "title": "JWT", "status": "todo"}]
 
 
 @time_machine.travel(NOON, tick=False)
@@ -93,3 +93,10 @@ def test_today_endpoint_404_then_200(auth, student):
     assert c.get("/api/dailies/today/").status_code == 404
     c.post("/api/dailies/", {"done": "a"})
     assert c.get("/api/dailies/today/").data["done"] == "a"
+
+
+@time_machine.travel(NOON, tick=False)
+def test_daily_task_chip_has_key(auth, student):
+    t = Task.objects.create(owner=student, created_by=student, title="JWT")
+    r = auth(student).post("/api/dailies/", {"done": "a", "task_ids": [t.id]}, format="json")
+    assert r.data["tasks"][0]["key"] == f"SB-{t.id}"

@@ -75,7 +75,16 @@
     "assign_btn": "Assign",
     "label_placeholder": "Label + Enter",
     "assigned_one": "Assigned to {{count}} student",
-    "assigned_other": "Assigned to {{count}} students"
+    "assigned_other": "Assigned to {{count}} students",
+    "only_teacher_accepts": "Only the teacher can accept this task",
+    "accept": "Accept",
+    "return": "Return to work",
+    "return_title": "Return to work",
+    "return_comment": "Comment (optional)",
+    "personal": "Personal task",
+    "assignee": "Assignee",
+    "author": "Author",
+    "from_teacher": "From teacher"
   },
   "dailies": {
     "title": "Dailies",
@@ -140,5 +149,12 @@
     "teacher": "From teacher",
     "overdue": "Overdue",
     "review": "In review"
+  },
+  "comments": {
+    "title": "Comments",
+    "placeholder": "Write a comment…",
+    "send": "Send",
+    "delete": "Delete",
+    "empty": "No comments yet"
   }
 }

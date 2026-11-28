@@ -6,7 +6,8 @@ import { BoardColumns } from '../board/BoardColumns'
 import { BoardToolbar } from '../board/BoardToolbar'
 import { filterTasks, type Quick } from '../board/filters'
 import { TaskForm } from '../board/TaskForm'
-import { TaskModal } from '../board/TaskModal'
+import { ReturnDialog } from '../board/ReturnDialog'
+import { TaskDetail } from '../board/TaskDetail'
 import { useTaskBoard } from '../board/useTaskBoard'
 import { Page } from '../layout/AppLayout'
 import { GroupSwitcher, StudentFilter } from '../layout/GroupSwitcher'
@@ -16,7 +17,7 @@ export default function Board() {
   const { t } = useTranslation()
   const me = useMe()
   const scope = useScope()
-  const board = useTaskBoard(scope.groupId ? { group: scope.groupId, owner: scope.studentId ?? undefined } : null)
+  const board = useTaskBoard(scope.groupId ? { group: scope.groupId, owner: scope.studentId ?? undefined } : null, me)
   const [open, setOpen] = useState<Task | null>(null)
   const [creating, setCreating] = useState(false)
   const [query, setQuery] = useState('')
@@ -36,6 +37,7 @@ export default function Board() {
       <BoardToolbar query={query} onQuery={setQuery} quick={quick} onQuick={setQuick} isTeacher={isTeacher} />
       {board.error && <div className="form-error" style={{ textAlign: 'center' }}>{board.error}</div>}
       {flash && <div className="flash" data-testid="flash">{flash}</div>}
+      {board.notice && <div className="notice" data-testid="notice">{board.notice}</div>}
       {visible === null ? (
         <div className="empty">{t('common.loading')}</div>
       ) : (
@@ -51,9 +53,10 @@ export default function Board() {
           }} />
       )}
       {open && (
-        <TaskModal task={open} editable={open.owner.id === me.id && !open.from_teacher}
-          onClose={() => setOpen(null)} onSaved={() => { setOpen(null); board.reload() }} />
+        <TaskDetail task={open} me={me} onClose={() => setOpen(null)}
+          onChanged={() => { setOpen(null); board.reload() }} />
       )}
+      {board.pendingReturn && <ReturnDialog onConfirm={board.confirmReturn} onCancel={board.cancelReturn} />}
     </Page>
   )
 }

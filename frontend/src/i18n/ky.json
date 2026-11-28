@@ -75,7 +75,16 @@
     "assign_btn": "Берүү",
     "label_placeholder": "Белги жана Enter",
     "assigned_one": "{{count}} студентке берилди",
-    "assigned_other": "{{count}} студентке берилди"
+    "assigned_other": "{{count}} студентке берилди",
+    "only_teacher_accepts": "Тапшырманы мугалим кабыл алат",
+    "accept": "Кабыл алуу",
+    "return": "Кайра иштетүү",
+    "return_title": "Кайра иштетүү",
+    "return_comment": "Комментарий (милдеттүү эмес)",
+    "personal": "Жеке тапшырма",
+    "assignee": "Аткаруучу",
+    "author": "Автор",
+    "from_teacher": "Мугалимден"
   },
   "dailies": {
     "title": "Дейликтер",
@@ -140,5 +149,12 @@
     "teacher": "Мугалимден",
     "overdue": "Мөөнөтү өткөн",
     "review": "Текшерүүдө"
+  },
+  "comments": {
+    "title": "Комментарийлер",
+    "placeholder": "Комментарий жазуу…",
+    "send": "Жөнөтүү",
+    "delete": "Өчүрүү",
+    "empty": "Азырынча комментарий жок"
   }
 }

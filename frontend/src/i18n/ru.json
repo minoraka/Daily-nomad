@@ -77,7 +77,16 @@
     "assigned_one": "Назначено {{count}} студенту",
     "assigned_few": "Назначено {{count}} студентам",
     "assigned_many": "Назначено {{count}} студентам",
-    "assigned_other": "Назначено {{count}} студентам"
+    "assigned_other": "Назначено {{count}} студентам",
+    "only_teacher_accepts": "Задачу принимает преподаватель",
+    "accept": "Принять",
+    "return": "Вернуть в работу",
+    "return_title": "Вернуть в работу",
+    "return_comment": "Комментарий (необязательно)",
+    "personal": "Личная задача",
+    "assignee": "Исполнитель",
+    "author": "Автор",
+    "from_teacher": "От преподавателя"
   },
   "dailies": {
     "title": "Дейлики",
@@ -144,5 +153,12 @@
     "teacher": "От преподавателя",
     "overdue": "Просроченные",
     "review": "На проверке"
+  },
+  "comments": {
+    "title": "Комментарии",
+    "placeholder": "Написать комментарий…",
+    "send": "Отправить",
+    "delete": "Удалить",
+    "empty": "Комментариев пока нет"
   }
 }

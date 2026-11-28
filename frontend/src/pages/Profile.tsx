@@ -6,7 +6,8 @@ import type { Me, Task } from '../api/types'
 import { useMe } from '../auth/AuthContext'
 import { BoardColumns } from '../board/BoardColumns'
 import { TaskForm } from '../board/TaskForm'
-import { TaskModal } from '../board/TaskModal'
+import { ReturnDialog } from '../board/ReturnDialog'
+import { TaskDetail } from '../board/TaskDetail'
 import { useTaskBoard } from '../board/useTaskBoard'
 import { DailyItem } from '../dailies/DailyItem'
 import { StreakCard } from '../dailies/StreakCard'
@@ -25,7 +26,7 @@ export default function Profile() {
   const [tab, setTab] = useState<Tab>('board')
   const [modal, setModal] = useState<{ task: Task | null } | null>(null)
   const isStudent = user !== null && user !== 'missing' && user.role === 'student'
-  const board = useTaskBoard(isStudent ? { owner: id } : null)
+  const board = useTaskBoard(isStudent ? { owner: id } : null, me)
   const feed = useDailies(isStudent ? { author: id } : null)
 
   useEffect(() => {
@@ -64,9 +65,11 @@ export default function Profile() {
           onSaved={() => { setModal(null); board.reload() }} />
       )}
       {modal?.task && (
-        <TaskModal task={modal.task} editable={mine && !modal.task.from_teacher} onClose={() => setModal(null)}
-          onSaved={() => { setModal(null); board.reload() }} />
+        <TaskDetail task={modal.task} me={me} onClose={() => setModal(null)}
+          onChanged={() => { setModal(null); board.reload() }} />
       )}
+      {board.notice && <div className="notice">{board.notice}</div>}
+      {board.pendingReturn && <ReturnDialog onConfirm={board.confirmReturn} onCancel={board.cancelReturn} />}
     </Page>
   )
 }
