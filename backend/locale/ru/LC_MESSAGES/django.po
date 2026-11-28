@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+msgid "Students must choose a group."
+msgstr "Студент должен выбрать поток."
+
+msgid "Teachers do not belong to a group."
+msgstr "У преподавателя не может быть потока."
+
+msgid "Unknown or foreign task."
+msgstr "Неизвестная или чужая задача."
+
+msgid "Daily for today already exists."
+msgstr "Дейлик на сегодня уже написан."
+
+msgid "You can only edit today's daily."
+msgstr "Изменять можно только сегодняшний дейлик."
+
+msgid "Student"
+msgstr "Студент"
+
+msgid "Teacher"
+msgstr "Преподаватель"
+
+msgid "Planned"
+msgstr "Планирую"
+
+msgid "In progress"
+msgstr "В работе"
+
+msgid "Done"
+msgstr "Готово"
+
+msgid "No active account found with the given credentials"
+msgstr "Неверный логин или пароль."
+
+msgid "Given token not valid for any token type"
+msgstr "Токен недействителен."
+
+msgid "Token is invalid"
+msgstr "Токен недействителен."
+
+msgid "Token is expired"
+msgstr "Срок действия токена истёк."
+
+msgid "Token is invalid or expired"
+msgstr "Токен недействителен или истёк."
+
+#, python-brace-format
+msgid "Invalid pk \"{pk_value}\" - object does not exist."
+msgstr "Неверный id \"{pk_value}\" — объект не существует."

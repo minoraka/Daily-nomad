@@ -1,0 +1,46 @@
+{
+  "app": { "name": "Student Board" },
+  "nav": { "home": "Главная", "board": "Доска", "dailies": "Дейлики", "profile": "Профиль", "menu": "Меню" },
+  "top": { "logout": "Выйти", "theme_light": "Светлая тема", "theme_dark": "Тёмная тема", "language": "Язык" },
+  "auth": {
+    "login_title": "Вход", "register_title": "Регистрация",
+    "username": "Логин", "password": "Пароль", "first_name": "Имя", "last_name": "Фамилия",
+    "role": "Я", "group": "Поток", "choose_group": "Выберите поток",
+    "login_btn": "Войти", "register_btn": "Зарегистрироваться",
+    "no_account": "Нет аккаунта?", "have_account": "Уже есть аккаунт?",
+    "no_groups": "Потоков пока нет — попросите администратора создать их."
+  },
+  "role": { "student": "Студент", "teacher": "Преподаватель" },
+  "status": { "todo": "Планирую", "in_progress": "В работе", "done": "Готово" },
+  "group": { "label": "Поток" },
+  "board": {
+    "title": "Доска", "all_students": "Все студенты", "add_task": "Задача",
+    "new_task": "Новая задача", "edit_task": "Задача", "task_title": "Название", "task_description": "Описание",
+    "status": "Статус", "save": "Сохранить", "cancel": "Отмена", "delete": "Удалить", "close": "Закрыть",
+    "confirm_delete": "Удалить задачу?", "empty_column": "Пусто", "move_error": "Не удалось переместить задачу",
+    "no_description": "Без описания"
+  },
+  "dailies": {
+    "title": "Дейлики", "write": "Написать дейлик", "edit_today": "Редактировать сегодняшний",
+    "new": "Дейлик за сегодня",
+    "done": "Что сделал", "plans": "Что планирую", "blockers": "Что мешает", "tasks": "Задачи",
+    "done_placeholder": "Например: сделал форму входа, разобрался с JWT",
+    "plans_placeholder": "Что будешь делать дальше",
+    "blockers_placeholder": "Если что-то мешает — напиши",
+    "save": "Опубликовать", "edit": "Изменить", "delete": "Удалить", "cancel": "Отмена",
+    "confirm_delete": "Удалить дейлик?", "empty": "Дейликов пока нет", "load_more": "Показать ещё",
+    "no_tasks": "Нет задач"
+  },
+  "home": {
+    "my_in_progress": "Мои задачи в работе", "recent_dailies": "Свежие дейлики потока",
+    "empty_tasks": "Сейчас нет задач в работе"
+  },
+  "streak": {
+    "days_one": "{{count}} день подряд!", "days_few": "{{count}} дня подряд!", "days_many": "{{count}} дней подряд!", "days_other": "{{count}} дня подряд!",
+    "hint": "пиши дейлик каждый учебный день для стрика", "today": "сегодня, {{date}}",
+    "day_of": "день {{n}} из 6"
+  },
+  "days": { "mon": "пн", "tue": "вт", "wed": "ср", "thu": "чт", "fri": "пт", "sat": "сб" },
+  "profile": { "board": "Доска", "dailies": "Дейлики", "teacher_note": "Преподаватель — только просмотр" },
+  "common": { "loading": "Загрузка…", "error": "Что-то пошло не так", "retry": "Повторить", "not_found": "Не найдено" }
+}
