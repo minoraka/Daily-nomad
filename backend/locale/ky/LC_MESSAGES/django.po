@@ -75,3 +75,42 @@ msgstr "\"{input}\" — туура эмес тандоо."
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
 msgstr "Туура эмес id \"{pk_value}\" — мындай объект жок."
+
+msgid "Choose either assignees or group."
+msgstr "Же студенттерди, же агымды тандаңыз."
+
+msgid "Unknown group."
+msgstr "Мындай агым жок."
+
+msgid "No students in this group."
+msgstr "Бул агымда студенттер жок."
+
+msgid "Only students can be assignees."
+msgstr "Тапшырманы студенттерге гана берүүгө болот."
+
+msgid "Allowed estimates: 1, 2, 3, 5, 8."
+msgstr "Уруксат берилген баалар: 1, 2, 3, 5, 8."
+
+msgid "At most 5 labels."
+msgstr "5 белгиден ашпашы керек."
+
+msgid "Label is too long (max 24)."
+msgstr "Белги өтө узун (эң көп 24 белги)."
+
+msgid "Labels must be a list of strings."
+msgstr "Белгилер саптардын тизмеси болушу керек."
+
+msgid "In review"
+msgstr "Текшерүүдө"
+
+msgid "Low"
+msgstr "Төмөн"
+
+msgid "Medium"
+msgstr "Орточо"
+
+msgid "High"
+msgstr "Жогору"
+
+msgid "Critical"
+msgstr "Критикалык"

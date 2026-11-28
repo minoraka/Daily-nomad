@@ -61,7 +61,7 @@ export function DailyForm({ initial, onSaved, onCancel }: {
           {myTasks.map((task) => (
             <button type="button" key={task.id} className={taskIds.includes(task.id) ? 'chip selected' : 'chip'}
               onClick={() => toggle(task.id)} aria-pressed={taskIds.includes(task.id)}>
-              {task.title}
+              <strong>{task.key}</strong>&nbsp;{task.title}
             </button>
           ))}
         </div>

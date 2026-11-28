@@ -5,7 +5,9 @@ import { getUser } from '../api/endpoints'
 import type { Me, Task } from '../api/types'
 import { useMe } from '../auth/AuthContext'
 import { BoardColumns } from '../board/BoardColumns'
-import { TaskModal } from '../board/TaskModal'
+import { TaskForm } from '../board/TaskForm'
+import { ReturnDialog } from '../board/ReturnDialog'
+import { TaskDetail } from '../board/TaskDetail'
 import { useTaskBoard } from '../board/useTaskBoard'
 import { DailyItem } from '../dailies/DailyItem'
 import { StreakCard } from '../dailies/StreakCard'
@@ -24,7 +26,7 @@ export default function Profile() {
   const [tab, setTab] = useState<Tab>('board')
   const [modal, setModal] = useState<{ task: Task | null } | null>(null)
   const isStudent = user !== null && user !== 'missing' && user.role === 'student'
-  const board = useTaskBoard(isStudent ? { owner: id } : null)
+  const board = useTaskBoard(isStudent ? { owner: id } : null, me)
   const feed = useDailies(isStudent ? { author: id } : null)
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function Profile() {
         )}
       </div>
       {isStudent && tab === 'board' && board.tasks && (
-        <BoardColumns tasks={board.tasks} canEdit={() => mine} onDrop={board.onDrop} showOwner={false}
+        <BoardColumns tasks={board.tasks} me={me} onDrop={board.onDrop} showOwner={false}
           onOpen={(task) => setModal({ task })} onAdd={mine ? () => setModal({ task: null }) : undefined} />
       )}
       {isStudent && tab === 'dailies' && (
@@ -58,10 +60,16 @@ export default function Profile() {
           {feed.hasMore && <button className="btn" onClick={feed.loadMore}>{t('dailies.load_more')}</button>}
         </div>
       )}
-      {modal && (
-        <TaskModal task={modal.task} editable={mine} onClose={() => setModal(null)}
+      {modal?.task === null && (
+        <TaskForm mode="personal" groupId={null} onClose={() => setModal(null)}
           onSaved={() => { setModal(null); board.reload() }} />
       )}
+      {modal?.task && (
+        <TaskDetail task={modal.task} me={me} onClose={() => setModal(null)}
+          onChanged={() => { setModal(null); board.reload() }} />
+      )}
+      {board.notice && <div className="notice">{board.notice}</div>}
+      {board.pendingReturn && <ReturnDialog onConfirm={board.confirmReturn} onCancel={board.cancelReturn} />}
     </Page>
   )
 }

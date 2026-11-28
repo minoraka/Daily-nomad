@@ -9,9 +9,11 @@ from .models import Daily
 
 
 class DailyTaskSerializer(serializers.ModelSerializer):
+    key = serializers.CharField(read_only=True)
+
     class Meta:
         model = Task
-        fields = ["id", "title", "status"]
+        fields = ["id", "key", "title", "status"]
 
 
 class DailySerializer(serializers.ModelSerializer):

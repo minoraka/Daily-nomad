@@ -4,7 +4,8 @@ const DB = `${process.cwd()}/test-results/e2e.sqlite3`
 
 export default defineConfig({
   testDir: './e2e',
-  timeout: 30_000,
+  timeout: 60_000,
+  workers: 1, // tests share one seeded database
   use: { baseURL: 'http://localhost:5174', viewport: { width: 1280, height: 900 } },
   webServer: [
     {

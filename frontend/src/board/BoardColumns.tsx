@@ -6,8 +6,9 @@ import { SortableContext, sortableKeyboardCoordinates, verticalListSortingStrate
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { STATUSES, type Task, type TaskStatus } from '../api/types'
+import { STATUSES, type Me, type Task, type TaskStatus } from '../api/types'
 import { cardId, columnId } from './ordering'
+import { canDrag } from './policy'
 import { SortableTaskCard, TaskCardView } from './TaskCard'
 
 function Column({ status, children, count, onAdd }: {
@@ -21,7 +22,8 @@ function Column({ status, children, count, onAdd }: {
   return (
     <section className="column" data-testid={`column-${status}`}>
       <div className="column-head">
-        <span className={`badge badge-${status}`}>{t(`status.${status}`)}</span>
+        <span className={`col-dot dot-${status}`} />
+        <span>{t(`status.${status}`)}</span>
         <span className="count">{count}</span>
         {onAdd && (
           <button className="btn btn-sm btn-primary" onClick={onAdd} data-testid="add-task">
@@ -37,9 +39,9 @@ function Column({ status, children, count, onAdd }: {
   )
 }
 
-export function BoardColumns({ tasks, canEdit, onDrop, onOpen, onAdd, showOwner = true }: {
+export function BoardColumns({ tasks, me, onDrop, onOpen, onAdd, showOwner = true }: {
   tasks: Task[]
-  canEdit: (t: Task) => boolean
+  me: Me
   onDrop: (task: Task, overId: string) => void
   onOpen: (t: Task) => void
   onAdd?: () => void
@@ -68,7 +70,7 @@ export function BoardColumns({ tasks, canEdit, onDrop, onOpen, onAdd, showOwner 
             <Column key={status} status={status} count={col.length} onAdd={status === 'todo' ? onAdd : undefined}>
               <SortableContext items={col.map((t) => cardId(t.id))} strategy={verticalListSortingStrategy}>
                 {col.map((t) => (
-                  <SortableTaskCard key={t.id} task={t} mine={canEdit(t)} draggable={canEdit(t)} showOwner={showOwner}
+                  <SortableTaskCard key={t.id} task={t} draggable={canDrag(me, t)} showOwner={showOwner}
                     onOpen={onOpen} />
                 ))}
               </SortableContext>
@@ -76,7 +78,7 @@ export function BoardColumns({ tasks, canEdit, onDrop, onOpen, onAdd, showOwner 
           )
         })}
       </div>
-      <DragOverlay>{active && <TaskCardView task={active} mine showOwner={showOwner} className="overlay" />}</DragOverlay>
+      <DragOverlay>{active && <TaskCardView task={active} draggable showOwner={showOwner} className="overlay" />}</DragOverlay>
     </DndContext>
   )
 }

@@ -29,3 +29,23 @@ def test_seed_demo_idempotent(db):
     n = User.objects.count()
     call_command("seed_demo")
     assert n == User.objects.count() == 7
+
+
+def test_seed_has_teacher_tasks(db):
+    from django.utils import timezone
+
+    from board.models import Comment, Task
+    call_command("seed_demo")
+    tt = Task.objects.filter(created_by__username="demo_teacher")
+    assert tt.count() >= 3
+    assert tt.filter(status="review").exists()
+    assert tt.filter(deadline__lt=timezone.localdate()).exclude(status="done").exists()
+    assert Comment.objects.count() >= 2
+
+
+def test_assign_error_translated(auth, teacher, db):
+    from accounts.models import Group
+    g = Group.objects.create(name="Пусто")
+    c = auth(teacher)
+    r = c.post("/api/tasks/assign/", {"title": "x", "group": g.id}, format="json", HTTP_ACCEPT_LANGUAGE="ky")
+    assert "студенттер жок" in str(r.data["group"][0])
