@@ -2,7 +2,7 @@ from board.models import Task
 
 
 def mk(user, title, status="todo", position=0):
-    return Task.objects.create(owner=user, title=title, status=status, position=position)
+    return Task.objects.create(owner=user, created_by=user, title=title, status=status, position=position)
 
 
 def test_student_creates_task_at_end_of_todo(auth, student):

@@ -34,7 +34,7 @@ def test_teacher_cannot_create_daily(auth, teacher):
 
 @time_machine.travel(NOON, tick=False)
 def test_daily_links_own_tasks(auth, student):
-    t = Task.objects.create(owner=student, title="JWT")
+    t = Task.objects.create(owner=student, created_by=student, title="JWT")
     r = auth(student).post("/api/dailies/", {"done": "a", "task_ids": [t.id]}, format="json")
     assert r.status_code == 201
     assert r.data["tasks"] == [{"id": t.id, "title": "JWT", "status": "todo"}]
@@ -42,7 +42,7 @@ def test_daily_links_own_tasks(auth, student):
 
 @time_machine.travel(NOON, tick=False)
 def test_daily_rejects_foreign_task(auth, student, student2):
-    t = Task.objects.create(owner=student2, title="чужая")
+    t = Task.objects.create(owner=student2, created_by=student2, title="чужая")
     r = auth(student).post("/api/dailies/", {"done": "a", "task_ids": [t.id]}, format="json")
     assert r.status_code == 400
 

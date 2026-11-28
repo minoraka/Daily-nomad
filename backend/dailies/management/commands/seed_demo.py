@@ -56,7 +56,7 @@ class Command(BaseCommand):
             for title, status in TASKS[i % 2:][:count]:
                 pos = positions.get(status, 0)
                 positions[status] = pos + 1
-                tasks.append(Task.objects.create(owner=user, title=title, status=status, position=pos))
+                tasks.append(Task.objects.create(owner=user, created_by=user, title=title, status=status, position=pos))
             day = today if today.weekday() != 6 else prev_study_day(today)
             for n in range(5 - i % 3):
                 done, plans, blockers = DAILY_TEXTS[(n + i) % len(DAILY_TEXTS)]

@@ -21,7 +21,7 @@ class TaskFilter(django_filters.FilterSet):
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.select_related("owner")
+    queryset = Task.objects.select_related("owner", "created_by")
     filterset_class = TaskFilter
     permission_classes = [permissions.IsAuthenticated, StudentCanCreate, IsOwnerOrReadOnly]
     pagination_class = None
@@ -31,7 +31,7 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         last = Task.objects.filter(owner=self.request.user, status=Task.Status.TODO).aggregate(m=Max("position"))["m"]
-        serializer.save(owner=self.request.user, status=Task.Status.TODO, position=0 if last is None else last + 1)
+        serializer.save(owner=self.request.user, created_by=self.request.user, status=Task.Status.TODO, position=0 if last is None else last + 1)
 
     def perform_update(self, serializer):
         old_status = serializer.instance.status
