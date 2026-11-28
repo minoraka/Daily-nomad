@@ -52,3 +52,42 @@ msgstr "Токен недействителен или истёк."
 #, python-brace-format
 msgid "Invalid pk \"{pk_value}\" - object does not exist."
 msgstr "Неверный id \"{pk_value}\" — объект не существует."
+
+msgid "Choose either assignees or group."
+msgstr "Укажите либо студентов, либо поток."
+
+msgid "Unknown group."
+msgstr "Такого потока нет."
+
+msgid "No students in this group."
+msgstr "В этом потоке нет студентов."
+
+msgid "Only students can be assignees."
+msgstr "Назначать задачи можно только студентам."
+
+msgid "Allowed estimates: 1, 2, 3, 5, 8."
+msgstr "Допустимые оценки: 1, 2, 3, 5, 8."
+
+msgid "At most 5 labels."
+msgstr "Не больше 5 меток."
+
+msgid "Label is too long (max 24)."
+msgstr "Слишком длинная метка (максимум 24 символа)."
+
+msgid "Labels must be a list of strings."
+msgstr "Метки должны быть списком строк."
+
+msgid "In review"
+msgstr "На проверке"
+
+msgid "Low"
+msgstr "Низкий"
+
+msgid "Medium"
+msgstr "Средний"
+
+msgid "High"
+msgstr "Высокий"
+
+msgid "Critical"
+msgstr "Критичный"

@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 from accounts.serializers import AuthorSerializer
 
-from .models import Task
+from .models import Comment, Task
 
 MAX_LABELS = 5
 MAX_LABEL_LEN = 24
@@ -104,3 +104,18 @@ class AssignSerializer(TaskSerializer):
         attrs.pop("group", None)
         attrs["students"] = students
         return attrs
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    author = UserRefSerializer(read_only=True)
+    text = serializers.CharField(max_length=2000, trim_whitespace=True)
+    can_delete = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Comment
+        fields = ["id", "task", "author", "text", "created_at", "can_delete"]
+        read_only_fields = ["task", "created_at"]
+
+    def get_can_delete(self, obj):
+        request = self.context.get("request")
+        return bool(request and obj.author_id == request.user.id)

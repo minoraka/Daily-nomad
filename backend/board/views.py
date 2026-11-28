@@ -2,14 +2,15 @@ import uuid
 
 import django_filters
 from django.db import transaction
-from django.db.models import Max
-from rest_framework import permissions, status, viewsets
+from django.db.models import Count, Max
+from rest_framework import mixins, permissions, status, viewsets
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from . import policy
-from .models import Task
-from .serializers import AssignSerializer, MoveSerializer, TaskCreateSerializer, TaskSerializer
+from .models import Comment, Task
+from .serializers import AssignSerializer, CommentSerializer, MoveSerializer, TaskCreateSerializer, TaskSerializer
 from .services import move_task
 
 
@@ -27,8 +28,8 @@ class TaskPermission(permissions.BasePermission):
         return True
 
     def has_object_permission(self, request, view, task):
-        if request.method in permissions.SAFE_METHODS:
-            return True
+        if request.method in permissions.SAFE_METHODS or view.action == "comments":
+            return True  # commenting rights are checked inside the action
         user = request.user
         if view.action == "destroy":
             return policy.can_delete(user, task)
@@ -59,7 +60,7 @@ class TaskFilter(django_filters.FilterSet):
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-    queryset = Task.objects.select_related("owner", "created_by")
+    queryset = Task.objects.select_related("owner", "created_by").annotate(comments_count=Count("comments"))
     filterset_class = TaskFilter
     permission_classes = [TaskPermission]
     pagination_class = None
@@ -113,3 +114,27 @@ class TaskViewSet(viewsets.ModelViewSet):
         move_task(task, ser.validated_data["status"], ser.validated_data["position"])
         task.refresh_from_db()
         return Response(TaskSerializer(task).data)
+
+    @action(detail=True, methods=["get", "post"])
+    def comments(self, request, pk=None):
+        task = self.get_object()
+        if request.method == "GET":
+            qs = task.comments.select_related("author")
+            return Response(CommentSerializer(qs, many=True, context=self.get_serializer_context()).data)
+        if not policy.can_comment(request.user, task):
+            raise PermissionDenied()
+        ser = CommentSerializer(data=request.data, context=self.get_serializer_context())
+        ser.is_valid(raise_exception=True)
+        ser.save(task=task, author=request.user)
+        return Response(ser.data, status=status.HTTP_201_CREATED)
+
+
+class IsCommentAuthor(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.author_id == request.user.id
+
+
+class CommentViewSet(mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [permissions.IsAuthenticated, IsCommentAuthor]
