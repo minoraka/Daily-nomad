@@ -85,3 +85,11 @@ test('cancelled return does not move', async () => {
   expect(r.current.pendingReturn).toBeNull()
   expect(r.current.tasks?.[0].status).toBe('review')
 })
+
+test('teacher moving in_progress back to todo needs no dialog', async () => {
+  tasks = [teacherTask('in_progress')]
+  const r = await setup(teacher)
+  await act(() => r.current.onDrop(tasks[0], 'col-todo'))
+  expect(r.current.pendingReturn).toBeNull()
+  expect(moveTask).toHaveBeenCalledWith(5, 'todo', 0)
+})

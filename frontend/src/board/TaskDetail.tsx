@@ -10,7 +10,7 @@ import { Avatar, fullName } from '../layout/Avatar'
 import { Field, FormErrors } from '../layout/Field'
 import { Modal } from '../layout/Modal'
 import { Comments } from './Comments'
-import { canDelete, canEditFields, canMove, isBackward } from './policy'
+import { canDelete, canEditFields, canMove, needsReturnDialog } from './policy'
 import { ReturnDialog } from './ReturnDialog'
 import { Labels, PriorityIcon } from './TaskCard'
 import { TaskMetaFields } from './TaskFields'
@@ -54,7 +54,7 @@ export function TaskDetail({ task, me, onClose, onChanged }: {
 
   function changeStatus(to: TaskStatus) {
     if (to === task.status) return
-    if (me.role === 'teacher' && isBackward(task.status, to)) setReturnTo(to)
+    if (me.role === 'teacher' && needsReturnDialog(task.status, to)) setReturnTo(to)
     else run(() => moveTask(task.id, to, END))
   }
 

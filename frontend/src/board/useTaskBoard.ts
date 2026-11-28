@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { addComment, listTasks, moveTask, type TaskQuery } from '../api/endpoints'
 import type { Me, Task } from '../api/types'
 import { applyDrop, computeDrop } from './ordering'
-import { canMove, isBackward } from './policy'
+import { canMove, needsReturnDialog } from './policy'
 
 export interface PendingReturn { task: Task; overId: string }
 
@@ -59,7 +59,7 @@ export function useTaskBoard(query: TaskQuery | null, me: Me) {
       setNotice(t('board.only_teacher_accepts'))
       return
     }
-    if (me.role === 'teacher' && isBackward(task.status, drop.status)) {
+    if (me.role === 'teacher' && needsReturnDialog(task.status, drop.status)) {
       setPendingReturn({ task, overId })
       return
     }

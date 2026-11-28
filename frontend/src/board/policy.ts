@@ -17,3 +17,7 @@ export const canDrag = (me: Me, t: Task) => STATUSES.some((s) => canMove(me, t, 
 export const canDelete = canEditFields
 export const canComment = (me: Me, t: Task) => me.id === t.owner.id || me.role === 'teacher'
 export const isBackward = (from: TaskStatus, to: TaskStatus) => STATUSES.indexOf(to) < STATUSES.indexOf(from)
+
+/** Teacher sends a task back out of "review" or "done": ask for an optional comment first. */
+export const needsReturnDialog = (from: TaskStatus, to: TaskStatus) =>
+  (from === 'review' || from === 'done') && isBackward(from, to)

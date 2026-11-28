@@ -44,3 +44,11 @@ test('isBackward', () => {
   expect(isBackward('todo', 'review')).toBe(false)
   expect(isBackward('review', 'review')).toBe(false)
 })
+
+test('return dialog only for moves back out of review or done', async () => {
+  const { needsReturnDialog } = await import('./policy')
+  expect(needsReturnDialog('review', 'in_progress')).toBe(true)
+  expect(needsReturnDialog('done', 'todo')).toBe(true)
+  expect(needsReturnDialog('in_progress', 'todo')).toBe(false)
+  expect(needsReturnDialog('todo', 'review')).toBe(false)
+})

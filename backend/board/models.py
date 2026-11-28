@@ -20,7 +20,8 @@ class Task(models.Model):
 
     # owner = assignee: whose board the card is on.
     owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="tasks")
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name="created_tasks")
+    # RESTRICT (not PROTECT): deleting a student still cascades their own tasks via `owner`.
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT, related_name="created_tasks")
     title = models.CharField(_("title"), max_length=200)
     description = models.TextField(_("description"), blank=True)
     status = models.CharField(max_length=20, choices=Status.choices, default=Status.TODO)

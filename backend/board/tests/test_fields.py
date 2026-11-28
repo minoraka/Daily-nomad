@@ -54,3 +54,9 @@ def test_review_status_move(auth, student):
     t = Task.objects.create(owner=student, created_by=student, title="a")
     r = auth(student).post(f"/api/tasks/{t.id}/move/", {"status": "review", "position": 0})
     assert r.status_code == 200 and r.data["status"] == "review"
+
+
+def test_student_with_personal_tasks_can_be_deleted(student):
+    Task.objects.create(owner=student, created_by=student, title="своя")
+    student.delete()
+    assert Task.objects.count() == 0
