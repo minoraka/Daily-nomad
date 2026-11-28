@@ -6,15 +6,7 @@ import { createTask, deleteTask, updateTask } from '../api/endpoints'
 import { STATUSES, type Task, type TaskStatus } from '../api/types'
 import { Avatar, fullName } from '../layout/Avatar'
 import { Field, FormErrors } from '../layout/Field'
-
-export function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
-  return (
-    <div className="modal-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}
-      onKeyDown={(e) => e.key === 'Escape' && onClose()}>
-      <div className="modal card" role="dialog" aria-modal="true">{children}</div>
-    </div>
-  )
-}
+import { Modal } from '../layout/Modal'
 
 /** View (read-only) or edit/create a task. `task` null = create. */
 export function TaskModal({ task, editable, onClose, onSaved }: {

@@ -66,7 +66,16 @@
     "deadline": "Deadline",
     "labels": "Labels",
     "comments": "Comments",
-    "priority": "Priority"
+    "priority": "Priority",
+    "search": "Search by title or SB number",
+    "assign_title": "Assign a task",
+    "assign_to": "Assign to",
+    "target_group": "Whole group",
+    "target_students": "Pick students",
+    "assign_btn": "Assign",
+    "label_placeholder": "Label + Enter",
+    "assigned_one": "Assigned to {{count}} student",
+    "assigned_other": "Assigned to {{count}} students"
   },
   "dailies": {
     "title": "Dailies",
@@ -125,5 +134,11 @@
     "medium": "Medium",
     "high": "High",
     "critical": "Critical"
+  },
+  "quick": {
+    "mine": "Mine",
+    "teacher": "From teacher",
+    "overdue": "Overdue",
+    "review": "In review"
   }
 }

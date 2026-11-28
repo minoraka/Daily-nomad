@@ -227,3 +227,21 @@ select { cursor: pointer; }
 }
 button.chip { cursor: pointer; }
 .chip.selected { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- board toolbar ---------- */
+.board-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.search { display: flex; align-items: center; gap: 6px; background: var(--surface); border-radius: 10px; padding: 0 10px;
+  border: 1px solid var(--border); color: var(--text-muted); min-width: 240px; }
+.search input { border: 0; background: transparent; padding: 7px 0; font-size: 12px; }
+.quick { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 16px;
+  padding: 5px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.quick:hover { border-color: var(--text-muted); }
+.quick.active { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+.flash { text-align: center; font-size: 12px; font-weight: 600; color: var(--success-text); background: var(--success);
+  border-radius: 10px; padding: 6px; }
+.labels-input { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; background: var(--surface-3);
+  border: 1px solid var(--border); border-radius: 10px; padding: 5px 8px; }
+.labels-input input { border: 0; background: transparent; padding: 3px 0; flex: 1; min-width: 120px; }
+.labels-input .label { display: inline-flex; align-items: center; gap: 3px; }
+.labels-input .label button { border: 0; background: transparent; color: inherit; cursor: pointer; padding: 0; display: inline-flex; }
+.modal-wide { max-width: 880px; }

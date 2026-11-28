@@ -66,7 +66,18 @@
     "deadline": "Дедлайн",
     "labels": "Метки",
     "comments": "Комментарии",
-    "priority": "Приоритет"
+    "priority": "Приоритет",
+    "search": "Поиск по названию или SB-номеру",
+    "assign_title": "Назначить задачу",
+    "assign_to": "Кому",
+    "target_group": "Весь поток",
+    "target_students": "Выбрать студентов",
+    "assign_btn": "Назначить",
+    "label_placeholder": "Метка и Enter",
+    "assigned_one": "Назначено {{count}} студенту",
+    "assigned_few": "Назначено {{count}} студентам",
+    "assigned_many": "Назначено {{count}} студентам",
+    "assigned_other": "Назначено {{count}} студентам"
   },
   "dailies": {
     "title": "Дейлики",
@@ -127,5 +138,11 @@
     "medium": "Средний",
     "high": "Высокий",
     "critical": "Критичный"
+  },
+  "quick": {
+    "mine": "Мои",
+    "teacher": "От преподавателя",
+    "overdue": "Просроченные",
+    "review": "На проверке"
   }
 }

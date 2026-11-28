@@ -5,6 +5,7 @@ import { getUser } from '../api/endpoints'
 import type { Me, Task } from '../api/types'
 import { useMe } from '../auth/AuthContext'
 import { BoardColumns } from '../board/BoardColumns'
+import { TaskForm } from '../board/TaskForm'
 import { TaskModal } from '../board/TaskModal'
 import { useTaskBoard } from '../board/useTaskBoard'
 import { DailyItem } from '../dailies/DailyItem'
@@ -58,8 +59,12 @@ export default function Profile() {
           {feed.hasMore && <button className="btn" onClick={feed.loadMore}>{t('dailies.load_more')}</button>}
         </div>
       )}
-      {modal && (
-        <TaskModal task={modal.task} editable={mine} onClose={() => setModal(null)}
+      {modal?.task === null && (
+        <TaskForm mode="personal" groupId={null} onClose={() => setModal(null)}
+          onSaved={() => { setModal(null); board.reload() }} />
+      )}
+      {modal?.task && (
+        <TaskModal task={modal.task} editable={mine && !modal.task.from_teacher} onClose={() => setModal(null)}
           onSaved={() => { setModal(null); board.reload() }} />
       )}
     </Page>
