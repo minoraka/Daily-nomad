@@ -26,6 +26,7 @@ test('student: task, drag, daily, streak', async ({ page }) => {
   await page.getByTestId('add-task').click()
   await page.getByTestId('task-title').fill('E2E задача')
   await page.getByTestId('task-save').click()
+  await page.getByTestId('quick-mine').click()
   const card = page.getByTestId('column-todo').locator('.task-card', { hasText: 'E2E задача' })
   await expect(card).toBeVisible()
 
@@ -38,12 +39,13 @@ test('student: task, drag, daily, streak', async ({ page }) => {
   await page.mouse.move(tb.x + 40, tb.y + tb.height - 5, { steps: 15 })
   await page.mouse.up()
   await page.reload()
+  await page.getByTestId('quick-mine').click()
   await expect(page.getByTestId('column-in_progress').locator('.task-card', { hasText: 'E2E задача' })).toBeVisible()
 
   await page.goto('/dailies')
   await page.getByTestId('write-daily').click()
   await page.getByTestId('daily-done').fill('Сделал задачу через e2e')
-  await page.getByRole('button', { name: 'E2E задача' }).click()
+  await page.getByRole('button', { name: /E2E задача/ }).click()
   await page.getByTestId('daily-save').click()
   await expect(page.getByTestId('write-daily')).toHaveText('Редактировать сегодняшний')
   await page.getByTestId('write-daily').click()
@@ -64,15 +66,14 @@ test('language and theme persist', async ({ page }) => {
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light')
 })
 
-test('teacher: read-only board, group switch', async ({ page }) => {
+test('teacher: board, group switch', async ({ page }) => {
   await login(page, 'demo_teacher')
-  await expect(page.getByTestId('group-switcher')).toBeVisible()
   await expect(page).toHaveURL(/\/board/)
+  await expect(page.getByTestId('group-switcher')).toBeVisible()
   await expect(page.getByTestId('column-todo').locator('.task-card').first()).toBeVisible()
-  await expect(page.getByTestId('add-task')).toHaveCount(0)
-  const before = await page.locator('.t-owner').allInnerTexts()
+  const before = await page.locator('.t-key').allInnerTexts()
   await page.getByTestId('group-switcher').selectOption({ label: 'Поток: ИС-22' })
-  await expect(page.locator('.t-owner').first()).not.toHaveText(before[0])
+  await expect(page.locator('.t-key').first()).not.toHaveText(before[0])
   await expect(page.locator('.nav-item', { hasText: 'Главная' })).toHaveCount(0)
 })
 

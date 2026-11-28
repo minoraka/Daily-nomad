@@ -55,9 +55,14 @@ cd frontend && npx playwright test        # end-to-end (starts its own servers o
 
 ## Rules in short
 
+- Board columns: Planned → In progress → In review → Done. Cards show labels, priority, estimate, deadline,
+  number (`SB-25`), assignee and comments count; search by title or number, quick filters.
+- Students create personal tasks and move them anywhere.
+- Teachers assign tasks to selected students or a whole group (each student gets a copy). The student moves
+  it up to "In review"; only a teacher accepts it (Done) or returns it to work, optionally with a comment.
+- Comments: the assignee and any teacher can comment on a task; everyone can read.
 - One daily per student per day; it can be edited or deleted only on the same day.
 - Streak = consecutive study days (Mon–Sat) with a daily. Sunday neither breaks nor adds to it.
-- Only the owner can change their tasks and dailies; teachers only read.
 
 ## Translations
 

@@ -29,7 +29,7 @@ export function StudentFilter({ groupId, value, onChange }: {
     if (groupId) getGroupStudents(groupId).then(setStudents, () => setStudents([]))
   }, [groupId])
   return (
-    <select aria-label={t('board.all_students')} value={value ?? ''}
+    <select aria-label={t('board.all_students')} value={value ?? ''} data-testid="student-filter"
       onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}>
       <option value="">{t('board.all_students')}</option>
       {students.map((s) => <option key={s.id} value={s.id}>{fullName(s)}</option>)}
