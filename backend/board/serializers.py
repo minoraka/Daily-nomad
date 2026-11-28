@@ -72,3 +72,35 @@ class TaskCreateSerializer(TaskSerializer):
 class MoveSerializer(serializers.Serializer):
     status = serializers.ChoiceField(choices=Task.Status.choices)
     position = serializers.IntegerField(min_value=0)
+
+
+class AssignSerializer(TaskSerializer):
+    """Teacher creates one copy of the task per student: either explicit `assignees` or a whole `group`."""
+    assignees = serializers.ListField(child=serializers.IntegerField(), required=False, write_only=True)
+    group = serializers.IntegerField(required=False, write_only=True)
+
+    class Meta(TaskSerializer.Meta):
+        fields = TaskSerializer.Meta.fields + ["assignees", "group"]
+        read_only_fields = ["position", "status", "created_at", "updated_at"]
+
+    def validate(self, attrs):
+        from accounts.models import Group, User
+
+        has_list, has_group = "assignees" in attrs, "group" in attrs
+        if has_list == has_group:
+            raise serializers.ValidationError(_("Choose either assignees or group."))
+        if has_group:
+            if not Group.objects.filter(pk=attrs["group"]).exists():
+                raise serializers.ValidationError({"group": [_("Unknown group.")]})
+            students = list(User.objects.filter(group_id=attrs["group"], role=User.Role.STUDENT))
+            if not students:
+                raise serializers.ValidationError({"group": [_("No students in this group.")]})
+        else:
+            ids = set(attrs["assignees"])
+            students = list(User.objects.filter(pk__in=ids, role=User.Role.STUDENT))
+            if not ids or len(students) != len(ids):
+                raise serializers.ValidationError({"assignees": [_("Only students can be assignees.")]})
+        attrs.pop("assignees", None)
+        attrs.pop("group", None)
+        attrs["students"] = students
+        return attrs

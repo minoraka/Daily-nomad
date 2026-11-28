@@ -41,6 +41,11 @@ def teacher(db):
 
 
 @pytest.fixture
+def teacher2(db):
+    return _make_user("teacher2", "Айжан", "Сатыбалдиева", "teacher")
+
+
+@pytest.fixture
 def api():
     return APIClient()
 
