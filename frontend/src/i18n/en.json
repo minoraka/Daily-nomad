@@ -1,46 +1,129 @@
 {
-  "app": { "name": "Student Board" },
-  "nav": { "home": "Home", "board": "Board", "dailies": "Dailies", "profile": "Profile", "menu": "Menu" },
-  "top": { "logout": "Log out", "theme_light": "Light theme", "theme_dark": "Dark theme", "language": "Language" },
+  "app": {
+    "name": "Student Board"
+  },
+  "nav": {
+    "home": "Home",
+    "board": "Board",
+    "dailies": "Dailies",
+    "profile": "Profile",
+    "menu": "Menu"
+  },
+  "top": {
+    "logout": "Log out",
+    "theme_light": "Light theme",
+    "theme_dark": "Dark theme",
+    "language": "Language"
+  },
   "auth": {
-    "login_title": "Log in", "register_title": "Sign up",
-    "username": "Username", "password": "Password", "first_name": "First name", "last_name": "Last name",
-    "role": "I am a", "group": "Group", "choose_group": "Choose a group",
-    "login_btn": "Log in", "register_btn": "Sign up",
-    "no_account": "No account?", "have_account": "Already have an account?",
+    "login_title": "Log in",
+    "register_title": "Sign up",
+    "username": "Username",
+    "password": "Password",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "role": "I am a",
+    "group": "Group",
+    "choose_group": "Choose a group",
+    "login_btn": "Log in",
+    "register_btn": "Sign up",
+    "no_account": "No account?",
+    "have_account": "Already have an account?",
     "no_groups": "No groups yet — ask the administrator to create them."
   },
-  "role": { "student": "Student", "teacher": "Teacher" },
-  "status": { "todo": "Planned", "in_progress": "In progress", "done": "Done" },
-  "group": { "label": "Group" },
+  "role": {
+    "student": "Student",
+    "teacher": "Teacher"
+  },
+  "status": {
+    "todo": "Planned",
+    "in_progress": "In progress",
+    "review": "In review",
+    "done": "Done"
+  },
+  "group": {
+    "label": "Group"
+  },
   "board": {
-    "title": "Board", "all_students": "All students", "add_task": "Task",
-    "new_task": "New task", "edit_task": "Task", "task_title": "Title", "task_description": "Description",
-    "status": "Status", "save": "Save", "cancel": "Cancel", "delete": "Delete", "close": "Close",
-    "confirm_delete": "Delete this task?", "empty_column": "Empty", "move_error": "Could not move the task",
-    "no_description": "No description"
+    "title": "Board",
+    "all_students": "All students",
+    "add_task": "Task",
+    "new_task": "New task",
+    "edit_task": "Task",
+    "task_title": "Title",
+    "task_description": "Description",
+    "status": "Status",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "close": "Close",
+    "confirm_delete": "Delete this task?",
+    "empty_column": "Empty",
+    "move_error": "Could not move the task",
+    "no_description": "No description",
+    "from_teacher_by": "From teacher: {{name}}",
+    "estimate": "Estimate",
+    "deadline": "Deadline",
+    "labels": "Labels",
+    "comments": "Comments",
+    "priority": "Priority"
   },
   "dailies": {
-    "title": "Dailies", "write": "Write a daily", "edit_today": "Edit today's daily",
+    "title": "Dailies",
+    "write": "Write a daily",
+    "edit_today": "Edit today's daily",
     "new": "Today's daily",
-    "done": "What I did", "plans": "What I plan", "blockers": "What's blocking me", "tasks": "Tasks",
+    "done": "What I did",
+    "plans": "What I plan",
+    "blockers": "What's blocking me",
+    "tasks": "Tasks",
     "done_placeholder": "E.g.: built the login form, figured out JWT",
     "plans_placeholder": "What you'll do next",
     "blockers_placeholder": "If something is in the way — write it here",
-    "save": "Publish", "edit": "Edit", "delete": "Delete", "cancel": "Cancel",
-    "confirm_delete": "Delete this daily?", "empty": "No dailies yet", "load_more": "Show more",
+    "save": "Publish",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "confirm_delete": "Delete this daily?",
+    "empty": "No dailies yet",
+    "load_more": "Show more",
     "no_tasks": "No tasks"
   },
   "home": {
-    "my_in_progress": "My tasks in progress", "recent_dailies": "Latest dailies in the group",
+    "my_in_progress": "My tasks in progress",
+    "recent_dailies": "Latest dailies in the group",
     "empty_tasks": "Nothing in progress right now"
   },
   "streak": {
-    "days_one": "{{count}} day in a row!", "days_other": "{{count}} days in a row!",
-    "hint": "write a daily every study day to keep the streak", "today": "today, {{date}}",
+    "days_one": "{{count}} day in a row!",
+    "days_other": "{{count}} days in a row!",
+    "hint": "write a daily every study day to keep the streak",
+    "today": "today, {{date}}",
     "day_of": "day {{n}} of 6"
   },
-  "days": { "mon": "mon", "tue": "tue", "wed": "wed", "thu": "thu", "fri": "fri", "sat": "sat" },
-  "profile": { "board": "Board", "dailies": "Dailies", "teacher_note": "Teacher — view only" },
-  "common": { "loading": "Loading…", "error": "Something went wrong", "retry": "Retry", "not_found": "Not found" }
+  "days": {
+    "mon": "mon",
+    "tue": "tue",
+    "wed": "wed",
+    "thu": "thu",
+    "fri": "fri",
+    "sat": "sat"
+  },
+  "profile": {
+    "board": "Board",
+    "dailies": "Dailies",
+    "teacher_note": "Teacher — view only"
+  },
+  "common": {
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "not_found": "Not found"
+  },
+  "priority": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "critical": "Critical"
+  }
 }

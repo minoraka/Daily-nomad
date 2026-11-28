@@ -28,7 +28,7 @@ export default function Board() {
       {board.tasks === null ? (
         <div className="empty">{t('common.loading')}</div>
       ) : (
-        <BoardColumns tasks={board.tasks} canEdit={canEdit} onDrop={board.onDrop}
+        <BoardColumns tasks={board.tasks} me={me} onDrop={board.onDrop}
           onOpen={(task) => setModal({ task })} onAdd={canAdd ? () => setModal({ task: null }) : undefined} />
       )}
       {modal && (

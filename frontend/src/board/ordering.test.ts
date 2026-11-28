@@ -1,12 +1,10 @@
 import { describe, expect, test } from 'vitest'
-import type { Task, TaskStatus } from '../api/types'
+import type { TaskStatus } from '../api/types'
+import { makeTask, userRef } from '../test/fixtures'
 import { applyDrop, computeDrop, ownIndexAt } from './ordering'
 
 let seq = 0
-const mk = (owner: number, status: TaskStatus = 'todo'): Task => ({
-  id: ++seq, owner: { id: owner, first_name: '', last_name: '', initials: '' }, title: `t${seq}`,
-  description: '', status, position: 0, created_at: '', updated_at: '',
-})
+const mk = (owner: number, status: TaskStatus = 'todo') => makeTask({ id: ++seq, owner: userRef(owner), status })
 const A = 1, B = 2
 
 describe('ownIndexAt', () => {

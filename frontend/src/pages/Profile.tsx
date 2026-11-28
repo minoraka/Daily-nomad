@@ -48,7 +48,7 @@ export default function Profile() {
         )}
       </div>
       {isStudent && tab === 'board' && board.tasks && (
-        <BoardColumns tasks={board.tasks} canEdit={() => mine} onDrop={board.onDrop} showOwner={false}
+        <BoardColumns tasks={board.tasks} me={me} onDrop={board.onDrop} showOwner={false}
           onOpen={(task) => setModal({ task })} onAdd={mine ? () => setModal({ task: null }) : undefined} />
       )}
       {isStudent && tab === 'dailies' && (
